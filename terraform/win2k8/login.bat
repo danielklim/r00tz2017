@@ -1,0 +1,1 @@
+notepad C:\Users\Public\teh_win.txt

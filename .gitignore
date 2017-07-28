@@ -1,0 +1,5 @@
+terraform/variables.tf
+notes.txt
+*.pem
+*.tfstate
+*.backup
