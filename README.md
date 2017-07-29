@@ -2,15 +2,15 @@
 
 In this workshop you will be using open source tools to gain access to (i.e. hack) a remote host (i.e. computer). The workshop is organized into 2 main parts. First, there are 4 beginner challenges that are accompanied by thorough walkthroughs. These are:
 
-1. FTP / Directory Traversal
-2. HTTP / Vulnerable Web Sites
-3. Hash Cracking
-4. SMB / MS17-010
+1. [FTP / Directory Traversal](#ftp--directory-traversal)
+2. [HTTP / Vulnerable Web Sites](#http--vulnerable-web-sites)
+3. [Hash Cracking](#hash-cracking)
+4. [SMB / MS17-010](#smb--ms17-010)
 
 For participants who get through the first four challenges quickly and wish to try their hand at slight more advanced exploits, 2 additional challenges are provided. They are not as thoroughly outlined but a goal is set, and references are provided that will allow them to figure out how to achieve those goals. These are:
 
-- PHP / RCE using Wordpress
-- SQLI
+- [SQLI](#sqli)
+- [PHP / RCE using Wordpress](#php--rce-using-wordpress)
 
 The latter challenges take a deeper dive into aspects of the earlier challenges and can be completed in any order after the first 4.
 
@@ -31,7 +31,7 @@ OS | SSH | Remote Desktop
 ------------ | ------------ | -------------
 Linux | ssh (built-in) | [rdesktop](http://www.rdesktop.org/)
 Windows | [Bitvise SSH Client](https://www.bitvise.com/ssh-client) | Remote Desktop (built-in)
-ChromeOS | Secure Shell | Chrome RDP
+ChromeOS | [Secure Shell](https://chrome.google.com/webstore/detail/secure-shell/pnhechapfaindjhompbnflcldabbghjo) | [Chrome RDP](https://chrome.google.com/webstore/detail/chrome-rdp/cbkkbcmdlboombapidmoeolnmdacpkch)
 OSX | ssh (built-in) | [CoRD](http://cord.sourceforge.net/)
 
 Each workstation should have assigned to it a set of 4 IP addresses.
@@ -188,7 +188,7 @@ Session completed
 
 Basically, john recognized the hash function to be of type phpass, then hashed every word in the wordlist using that function until it found the input that gave the same hash as the one we were examining. Apparently, this user really loves his 'covfefeinthemorning' (whatever that means).
 
-Now we can log into the backend of the Wordpress site! Go ahead and explore a bit. If you have basic familiarity with Wordpress, you know that we can now publish whatever we want on this website. More scary is the fact that the user whose account you've accessed is a super admin, so if you know a bit about the internal workings of Wordpress, you now have what is known as RCE (remote code execution) access to the underlying host that is serving the code. Basically, this means that you now own this computer. While going down this road is a tad bit beyond the scope of this exercise, if you are curious, you may further explore this avenue in the exercise [PHP / RCE using Wordpress](#php-rce-using-wordpress). 
+Now we can log into the backend of the Wordpress site! Go ahead and explore a bit. If you have basic familiarity with Wordpress, you know that we can now publish whatever we want on this website. More scary is the fact that the user whose account you've accessed is a super admin, so if you know a bit about the internal workings of Wordpress, you now have what is known as RCE (remote code execution) access to the underlying host that is serving the code. Basically, this means that you now own this computer. While going down this road is a tad bit beyond the scope of this exercise, if you are curious, you may further explore this avenue in the exercise [PHP / RCE using Wordpress](#php--rce-using-wordpress). 
 
 ### Critical Thinking
 1. What is the difference between hashing and encryption?
@@ -240,9 +240,9 @@ The WordPress exploit above relies on a category of attacks known as SQL Injecti
 3. Get access to the plaintext administrator password in the webapp at http://[target private IP]/widgetco2
 
 #### References
-[OWASP SQLI explanation](https://www.owasp.org/index.php/SQL_Injection)
-[Guru99 SQLI Tutorial](https://www.guru99.com/learn-sql-injection-with-practical-example.html)
-[SQLite table meta data](https://stackoverflow.com/questions/6460671)
+- [OWASP SQLI explanation](https://www.owasp.org/index.php/SQL_Injection)
+- [Guru99 SQLI Tutorial](https://www.guru99.com/learn-sql-injection-with-practical-example.html)
+- [SQLite table meta data](https://stackoverflow.com/questions/6460671)
 
 # PHP / RCE using Wordpress
 
@@ -254,7 +254,7 @@ Once you have access to an admin account in WP, you can gain RCE on the host, th
 3. Execute the payload on the target system and gain a meteterpreter shell.
 
 #### References
-[Editing WP PHP code](https://codex.wordpress.org/Editing_Files#Using_the_Theme_Editor_and_Plugin_Editor)
-[Executing system commands with PHP](http://php.net/manual/en/function.exec.php)
-[Creating Metasploit payloads](https://netsec.ws/?p=331)
+- [Editing WP PHP code](https://codex.wordpress.org/Editing_Files#Using_the_Theme_Editor_and_Plugin_Editor)
+- [Executing system commands with PHP](http://php.net/manual/en/function.exec.php)
+- [Creating Metasploit payloads](https://netsec.ws/?p=331)
 
