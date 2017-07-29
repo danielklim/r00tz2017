@@ -235,14 +235,15 @@ You should now have the password for the system! Now return to the RDP connectio
 The WordPress exploit above relies on a category of attacks known as SQL Injection (SQLI). In this exercise, you will gain a better understanding of SQLI by exploiting a web app vulnerable to standard SQLI and an advanced form known as blind SQLI.
 
 #### Goals
-1. Get access to the administrator password hash in the webapp at http://[target private IP]/widgetco1
+1. Use standard SQLI to get access to the administrator password hash in the webapp at http://[target private IP]/widgetco1
 2. (Optional) Crack the hash using john
-3. Get access to the plaintext administrator password in the webapp at http://[target private IP]/widgetco2
+3. Use blind SQLI to get access to the plaintext administrator password in the webapp at http://[target private IP]/widgetco2
 
 #### References
 - [OWASP SQLI explanation](https://www.owasp.org/index.php/SQL_Injection)
 - [Guru99 SQLI Tutorial](https://www.guru99.com/learn-sql-injection-with-practical-example.html)
 - [SQLite table meta data](https://stackoverflow.com/questions/6460671)
+- [OWASP Blind SQLI explanation](https://www.owasp.org/index.php/Blind_SQL_Injection)
 
 # PHP / RCE using Wordpress
 
