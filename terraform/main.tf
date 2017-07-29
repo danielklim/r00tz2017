@@ -21,7 +21,7 @@ resource "aws_instance" "win2k8" {
 	# Administrator:H@xdemo
 	count = 2
 
-	ami = "ami-1484da6f" # based on ami-1e542176
+	ami = "ami-eaa3fd91" # based on ami-1e542176
 	instance_type = "t2.medium"
 	vpc_security_group_ids = ["${aws_security_group.haxdemo_win2k8.id}"]
 	subnet_id = "${aws_subnet.haxdemo_subnet.id}"
@@ -61,7 +61,7 @@ resource "aws_instance" "kali" {
 	# ami = "ami-5008d946"
 	# ami = "ami-b2e4aca4"
 	ami = "ami-f4227c8f"
-	instance_type = "t2.medium"
+	instance_type = "t2.small"
 	vpc_security_group_ids = ["${aws_security_group.haxdemo_kali.id}"]
 	subnet_id = "${aws_subnet.haxdemo_subnet.id}"
 	# key_name = "${aws_key_pair.haxdemo_key.id}"
