@@ -19,9 +19,9 @@ resource "aws_instance" "win2k8" {
 	# Amazon/Windows_Server-2008-R2_SP2-English-64Bit-Base-2015.01.01	ami-f6f79d9e
 	# Amazon/Windows_Server-2008-R2_SP2-English-64Bit-Base-2015.01.04	ami-ac7602c4
 	# Administrator:H@xdemo
-	count = 2
+	count = 7
 
-	ami = "ami-eaa3fd91" # based on ami-1e542176
+	ami = "ami-d7aaf2ac" # based on ami-1e542176
 	instance_type = "t2.medium"
 	vpc_security_group_ids = ["${aws_security_group.haxdemo_win2k8.id}"]
 	subnet_id = "${aws_subnet.haxdemo_subnet.id}"
@@ -56,7 +56,7 @@ EOF
 
 # https://aws.amazon.com/marketplace/fulfillment?productId=8b7fdfe3-8cd5-43cc-8e5e-4e0e7f4139d5&ref_=dtl_psb_continue&region=us-east-1
 resource "aws_instance" "kali" {
-	count = 2
+	count = 7
 	# haxdemo:CorrectBatteryHorseStaple
 	# ami = "ami-5008d946"
 	# ami = "ami-b2e4aca4"
@@ -142,12 +142,12 @@ resource "aws_security_group" "haxdemo_win2k8" {
 		cidr_blocks = ["10.0.0.0/24"]
 	}
 
-	# egress {
-	# 	from_port = 0
-	# 	to_port = 0
-	# 	protocol = -1
-	# 	cidr_blocks = ["0.0.0.0/0"]
-	# }
+	egress {
+		from_port = 0
+		to_port = 0
+		protocol = -1
+		cidr_blocks = ["10.0.0.0/24"]
+	}
 
 }
 
