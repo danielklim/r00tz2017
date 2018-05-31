@@ -43,16 +43,15 @@ Each workstation should have assigned to it a set of 4 IP addresses.
 
 If you are using your own hardware, just ask one of the facilitators for a set of IPs to work with.
 
-When you are ready, SSH into your workstation using either (1) the provided private key, or (2) the password: CorrectBatteryHorseStaple
+When you are ready, SSH into your workstation using either (1) the provided private key, or (2) the password: cybercyber123
 
 For GUI based SSH clients, just fill in the appropriate blanks. For command line clients (CLI), the syntax will look something like:
-
-```bash
-# using private key
+<!-- # using private key
 ssh -i haxdemo.pub [IP]
-
+ -->
+```bash
 # using password
-ssh [IP]
+ssh haxdemo@[your external IP]
 ```
 
 # Scanning / Enumeration
@@ -62,7 +61,7 @@ First we need to figure out what is running on your target / what it even is. Is
 Nmap is a tool used for network discovery and scanning. In this case, we already know the address of our target so we will use the tool to see what is going on with the target from a network perspective. At its most basic, nmap lets us see what ports are open on the target system. 
 
 ```bash
-nmap [IP] -A -p20-450,3389
+nmap [target internal IP] -A -p20-450,3389
 ```
 
 Ok, we see that ports 21, 80, 135, 445, and 3389 are open. These ports are commonly associated with FTP, HTTP, SMB and RDP. On our target system there are one or more vulnerable services on each port. We will investigate each in turn.
@@ -123,7 +122,7 @@ We can use what we see here to check whether any off-the-shelf exploits are avai
 Open an SSH session to your attacking host and type the following.
 
 ```bash
-wpscan http://[target internal IP]/wp46 --enumerate ap
+sudo wpscan -u http://[target internal IP]/wp46 --enumerate ap
 ```
 
 This points the tool at the WP site we see and tells the tool to check for all known plugin vulnerabilities. This may take a few minutes but at the end of it, you will get a whole lot of output. While some or even many of the hits that come up will work against this system, they will mostly not be super helpful or require very specific conditions to work. However, there is one vulnerability in this system that is glaring. Towards the bottom, you will see an entry for a plugin called "wp-forum".
@@ -170,7 +169,7 @@ Let's run the hash we found from the Wordpress site through john. Type the follo
 ```bash
 cd ~
 printf '$P$BpSB2/Dfwq.m/ow80YFL4vALF5z4Yi.' > wp46.hash
-john -wordlist:/usr/share/wordlists/rockyou.txt wp46.hash
+sudo john --wordlist=/usr/share/wordlists/rockyou.txt wp46.hash
 ```
 
 You should see output like the following:

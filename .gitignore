@@ -3,3 +3,5 @@ notes.txt
 *.pem
 *.tfstate
 *.backup
+terraform/secrets/**
+terraform/.terraform/**
